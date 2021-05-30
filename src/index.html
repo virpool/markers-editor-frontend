@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>LyvitSport Markers Editor</title>
+  <link type="image/x-icon" href="./favicon.ico" rel="icon" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://unpkg.com/mobius1-selectr@latest/dist/selectr.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="map"></div>
+  <div class="searchbox">
+    <input id="search" type="text" autocomplete="on" name="search-places" placeholder="Search location...">
+  </div>
+
+  <script type="text/template" id="tmpl-create">
+    <div class="form">
+      <form method="post" action="" onsubmit="return false;">
+        <h3>Create marker</h3>
+        <select id="select-sport" placeholder="Select sport..."></select>
+        <input id="txt-marker-title" placeholder="Marker title (optional)" type="text">
+        <button id="btn-create" disabled>Create</button>
+        <a href="#" id="btn-delete" class="delete">Delete marker</a>
+      </form>
+    </div>
+  </script>
+
+  <script src="./index.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCycafn73jH57Td9HgPl4PWwExd97p374k&libraries=places&callback=handleGoogleMapReady""></script>
+  <script async defer src="https://unpkg.com/mobius1-selectr@latest/dist/selectr.min.js"></script>
+</body>
+</html>

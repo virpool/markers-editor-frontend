@@ -1,0 +1,30 @@
+{
+  "name": "lyvitsport-markers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build src/index.html",
+    "dev": "parcel serve src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/LyvitGroup/LyvitSport/Markers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/LyvitGroup/LyvitSport/Markers/issues"
+  },
+  "homepage": "https://gitlab.com/LyvitGroup/LyvitSport/Markers#readme",
+  "devDependencies": {
+    "less": "^4.1.1",
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "core-js": "^3.13.1",
+    "reset-css": "^5.0.1"
+  }
+}
