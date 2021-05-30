@@ -80,10 +80,12 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
     const $modal = document.querySelector('.modal');
     $modal.querySelector('h3').textContent = 'Update marker';
     $modal.querySelector('#txt-marker-title').value = markerData.title;
+    $modal.querySelector('#txt-marker-location').value = markerData.locationDisplayName;
 
     const onClickCreate = async () => {
       $btnCreate.setAttribute('disabled', 'disabled');
       markerData.title = nullableString($modal.querySelector('#txt-marker-title').value);
+      markerData.locationDisplayName = nullableString($modal.querySelector('#txt-marker-location').value);
       markerData.sportId = sportId;
       markerData.sportName = getSportNameById(sportId);
       await update(markerData);
@@ -130,11 +132,13 @@ const createMarker = (map, latLng) => {
     const marker = {
       sportId,
       title: nullableString(document.querySelector('#txt-marker-title').value),
+      locationDisplayName: nullableString(document.querySelector('#txt-marker-location').value),
       lon: latLng.lng(),
       lat: latLng.lat()
     };
-    const { id } = await create(marker);
+    const { id, locationDisplayName } = await create(marker);
     marker.id = id;
+    marker.locationDisplayName = locationDisplayName;
     marker.sportName = getSportNameById(sportId);
     addToMap(map, marker);
 
