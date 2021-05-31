@@ -1,4 +1,4 @@
-import { fetchAll, update } from '../services/markers';
+import { fetchAll } from '../services/markers';
 import { getLocation } from '../services/location';
 import { addToMap, createMarker } from '../components/map-marker';
 import { createAutocomplete } from '../components/autocomplete-map';

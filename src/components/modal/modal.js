@@ -1,6 +1,8 @@
 import './modal.less';
+import * as focusTrap from 'focus-trap';
 
 let isVisible = false;
+let modalFocusTrap;
 
 const show = (templateId, onHide) => {
   if (isVisible) throw new Error('Modal is already shown');
@@ -15,6 +17,7 @@ const show = (templateId, onHide) => {
   $modal.innerHTML = document.querySelector(templateId).innerHTML;
 
   const handleKeyPress = (e) => {
+    // escape
     if (e.keyCode === 27) {
       hide();
     }
@@ -29,11 +32,17 @@ const show = (templateId, onHide) => {
     $modal.parentElement.removeChild($modal);
     isVisible = false;
 
+    modalFocusTrap.deactivate();
+    modalFocusTrap = null;
+
     if (onHide) onHide();
   }
 
   $background.addEventListener('click', hide, false);
-  document.body.addEventListener('keyup', handleKeyPress);
+  document.addEventListener('keyup', handleKeyPress);
+
+  modalFocusTrap = focusTrap.createFocusTrap([$modal, $background]);
+  modalFocusTrap.activate();
 
   isVisible = true;
 
