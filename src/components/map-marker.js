@@ -1,6 +1,8 @@
 import { update, create, remove } from '../services/markers';
-import { show as showModal } from './modal';
 import { fetchAll as fetchSports } from '../services/sports';
+
+import { show as showModal } from './modal';
+import { init as initGallery } from './gallery';
 
 let sports;
 (async () => {
@@ -68,19 +70,23 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
     markerData.lat = mapMarker.position.lat();
     update(markerData);
   });
-  mapMarker.addListener('click', () => {
+  mapMarker.addListener('click', async () => {
     let $btnCreate;
     let sportId;
+
     const hide = createModal(markerData.sportId, (option) => {
       sportId = Number(option.value);
     }, () => {
       $btnCreate.removeEventListener('click', onClickCreate, false);
       $delete.removeEventListener('click', onClickRemove, false);
+      galleryDestroy();
     });
     const $modal = document.querySelector('.modal');
     $modal.querySelector('h3').textContent = 'Update marker';
     $modal.querySelector('#txt-marker-title').value = markerData.title;
     $modal.querySelector('#txt-marker-location').value = markerData.locationDisplayName;
+
+    const galleryDestroy = await initGallery($modal.querySelector('.gallery-widget'), markerData);
 
     const onClickCreate = async () => {
       $btnCreate.setAttribute('disabled', 'disabled');

@@ -24,6 +24,7 @@
     "parcel-bundler": "^1.12.3"
   },
   "dependencies": {
+    "@splidejs/splide": "^2.4.21",
     "core-js": "^3.13.1",
     "focus-trap": "^6.4.0",
     "reset-css": "^5.0.1"

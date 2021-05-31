@@ -21,6 +21,16 @@
         <select id="select-sport" placeholder="Select sport..."></select>
         <input id="txt-marker-title" placeholder="Marker title (optional)" type="text">
         <input id="txt-marker-location" placeholder="Location display name (optional)" type="text">
+        <div class="gallery-widget">
+          <div class="gallery splide">
+            <div class="splide__track">
+              <ul class="splide__list">
+              </ul>
+            </div>
+          </div>
+          <input id="photo" type="file" accept=".jpg,.jpeg,.png" multiple style="display: none" />
+          <button class="upload">upload photos</button>
+        </div>
         <button id="btn-create" disabled>Create</button>
         <a href="#" id="btn-delete" class="delete">Delete marker</a>
       </form>
