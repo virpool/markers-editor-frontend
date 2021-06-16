@@ -17,12 +17,13 @@ const request = ({method, path, data = null, isFileUpload = false}) => {
   if (data) {
     options.body = isFileUpload ? data : JSON.stringify(data)
   }
-  return fetch(API_PATH + path, options).then(resp => {
-    if (resp.status !== 204) {
-      return resp.json();
-    }
-    return Promise.resolve();
-  });
+  return fetch(API_PATH + path, options)
+    .then(resp => {
+      if (resp.status !== 204) {
+        return resp.json();
+      }
+      return Promise.resolve();
+    });
 }
 
 export { request };

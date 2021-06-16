@@ -51,7 +51,9 @@ const init = async ($el, marker) => {
   $gallery.addEventListener('click', onClickPhoto, false);
 
   const uploadHandler = (err, photo) => {
-    if (err) return;
+    if (err) {
+      return alert('Error, try again later');
+    }
 
     if (photo.predefinedMarkerId === marker.id) {
       photos.push(photo);
