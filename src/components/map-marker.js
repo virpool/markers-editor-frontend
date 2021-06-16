@@ -4,6 +4,8 @@ import { fetchAll as fetchSports } from '../services/sports';
 import { show as showModal } from './modal';
 import { init as initGallery } from './gallery';
 
+const MAIN_DOMAIN = process.env.MAIN_DOMAIN;
+
 let sports;
 (async () => {
   sports = await fetchSports();
@@ -50,7 +52,7 @@ const createModal = (sportId, onSportSelected, onHide) => {
 
 const addToMap = (map, markerData) => {
   const image = {
-    url: `https://lyvitsport.com/share_static/images/markers/${markerData.sportName}.svg`,
+    url: `${MAIN_DOMAIN}/share_static/images/markers/${markerData.sportName}.svg`,
     size: new google.maps.Size(32, 32),
     scaledSize: new google.maps.Size(32, 32)
   };
