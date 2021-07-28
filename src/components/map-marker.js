@@ -87,6 +87,8 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
     $modal.querySelector('h3').textContent = 'Update marker';
     $modal.querySelector('#txt-marker-title').value = markerData.title;
     $modal.querySelector('#txt-marker-location').value = markerData.locationDisplayName;
+    $modal.querySelector('#txt-marker-phone').value = markerData.phone;
+    $modal.querySelector('#txt-marker-website').value = markerData.website;
 
     const galleryDestroy = await initGallery($modal.querySelector('.gallery-widget'), markerData);
 
@@ -94,6 +96,8 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
       $btnCreate.setAttribute('disabled', 'disabled');
       markerData.title = nullableString($modal.querySelector('#txt-marker-title').value);
       markerData.locationDisplayName = nullableString($modal.querySelector('#txt-marker-location').value);
+      markerData.phone = nullableString($modal.querySelector('#txt-marker-phone').value);
+      markerData.website = nullableString($modal.querySelector('#txt-marker-website').value);
       markerData.sportId = sportId;
       markerData.sportName = getSportNameById(sportId);
       await update(markerData);
@@ -141,6 +145,8 @@ const createMarker = (map, latLng) => {
       sportId,
       title: nullableString(document.querySelector('#txt-marker-title').value),
       locationDisplayName: nullableString(document.querySelector('#txt-marker-location').value),
+      phone: nullableString(document.querySelector('#txt-marker-phone').phone),
+      website: nullableString(document.querySelector('#txt-marker-website').website),
       lon: latLng.lng(),
       lat: latLng.lat()
     };

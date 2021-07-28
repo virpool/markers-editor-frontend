@@ -23,7 +23,8 @@ const request = ({method, path, data = null, isFileUpload = false}) => {
         return resp.json();
       }
       return Promise.resolve();
-    });
+    })
+    .catch(() => alert('Network error'));
 }
 
 export { request };
