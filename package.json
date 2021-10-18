@@ -1,25 +1,24 @@
 {
-  "name": "lyvitsport-markers",
+  "name": "markers-editor-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "parcel build src/index.html",
     "dev": "parcel serve src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/LyvitGroup/LyvitSport/Markers.git"
+    "url": "git@github.com:virpool/markers-editor-frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/LyvitGroup/LyvitSport/Markers/issues"
-  },
-  "homepage": "https://gitlab.com/LyvitGroup/LyvitSport/Markers#readme",
+  "homepage": "https://github.com/virpool/markers-editor-frontend#readme",
   "devDependencies": {
+    "eslint": "^8.0.1",
     "less": "^4.1.1",
     "parcel-bundler": "^1.12.3"
   },
