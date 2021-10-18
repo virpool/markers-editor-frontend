@@ -1,9 +1,11 @@
 import { request } from '../net/request';
 
+const API_ENDPOINT = '/predefined_marker';
+
 const fetchAll = async (marker) => {
   return await request({
     method: 'GET',
-    path: `/predefined_marker/${marker.id}/gallery`
+    path: `${API_ENDPOINT}/${marker.id}/gallery`
   });
 }
 
@@ -13,7 +15,7 @@ const upload = async (marker, photo, cb) => {
     formData.append('photo', photo, photo.name);
     const resp = await request({
       method: 'POST',
-      path: `/predefined_marker/${marker.id}/gallery`,
+      path: `${API_ENDPOINT}/${marker.id}/gallery`,
       data: formData,
       isFileUpload: true
     });
@@ -27,7 +29,7 @@ const upload = async (marker, photo, cb) => {
 const remove = async (marker, photoId) => {
   return await request({
     method: 'DELETE',
-    path: `/predefined_marker/${marker.id}/gallery/${photoId}`
+    path: `${API_ENDPOINT}/${marker.id}/gallery/${photoId}`
   });
 }
 

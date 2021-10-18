@@ -76,12 +76,12 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
     let $btnCreate;
     let sportId;
 
-    const hide = createModal(markerData.sportId, (option) => {
+    const hideModal = createModal(markerData.sportId, (option) => {
       sportId = Number(option.value);
     }, () => {
       $btnCreate.removeEventListener('click', onClickCreate, false);
       $delete.removeEventListener('click', onClickRemove, false);
-      galleryDestroy();
+      destroyGallery();
     });
     const $modal = document.querySelector('.modal');
     $modal.querySelector('h3').textContent = 'Update marker';
@@ -90,7 +90,7 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
     $modal.querySelector('#txt-marker-phone').value = markerData.phone;
     $modal.querySelector('#txt-marker-website').value = markerData.website;
 
-    const galleryDestroy = await initGallery($modal.querySelector('.gallery-widget'), markerData);
+    const destroyGallery = await initGallery($modal.querySelector('.gallery-widget'), markerData);
 
     const onClickCreate = async () => {
       $btnCreate.setAttribute('disabled', 'disabled');
@@ -104,7 +104,7 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
       mapMarker.setMap(null);
       addToMap(map, markerData);
 
-      hide();
+      hideModal();
     };
 
     const onClickRemove = async (e) => {
@@ -114,7 +114,7 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
       await remove(markerData);
       mapMarker.setMap(null);
 
-      hide();
+      hideModal();
     };
 
     const $delete = $modal.querySelector('.delete');
@@ -131,15 +131,15 @@ const makeMarkerEditable = (map, mapMarker, markerData) => {
 const createMarker = (map, latLng) => {
   let $btnCreate;
   let sportId;
-  const hide = createModal(null, (option) => {
+  const hideModal = createModal(null, (option) => {
     sportId = Number(option.value);
     $btnCreate.removeAttribute('disabled');
   }, () => {
-    $btnCreate.removeEventListener('click', onClick, false);
+    $btnCreate.removeEventListener('click', onClickCreate, false);
   });
   $btnCreate = document.querySelector('#btn-create');
 
-  const onClick = async () => {
+  const onClickCreate = async () => {
     $btnCreate.setAttribute('disabled', 'disabled');
     const marker = {
       sportId,
@@ -156,10 +156,10 @@ const createMarker = (map, latLng) => {
     marker.sportName = getSportNameById(sportId);
     addToMap(map, marker);
 
-    hide();
+    hideModal();
   };
 
-  $btnCreate.addEventListener('click', onClick, false);
+  $btnCreate.addEventListener('click', onClickCreate, false);
 }
 
 export { addToMap, createMarker };

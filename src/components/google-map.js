@@ -1,4 +1,4 @@
-import { fetchAll } from '../services/markers';
+import { fetchAll as fetchMarkers } from '../services/markers';
 import { getLocation } from '../services/location';
 import { addToMap, createMarker } from '../components/map-marker';
 import { createAutocomplete } from '../components/autocomplete-map';
@@ -16,7 +16,10 @@ const create = async ($el) => {
     })
   });
 
-  const markers = await fetchAll();
+  const markers = await fetchMarkers().catch(err => {
+    console.error('Error with fetching markers', err);
+    return [];
+  });
   for (const marker of markers) {
     addToMap(map, marker);
   }

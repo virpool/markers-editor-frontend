@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 import { create as createMap } from './components/google-map';
 
 import './main.less';

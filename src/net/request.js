@@ -3,9 +3,9 @@ const AUTH_TOKEN = process.env.AUTH_TOKEN;
 
 const request = ({method, path, data = null, isFileUpload = false}) => {
   const options = {
-    method, // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    method,
+    mode: 'cors',
+    cache: 'no-cache',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + AUTH_TOKEN
@@ -22,7 +22,6 @@ const request = ({method, path, data = null, isFileUpload = false}) => {
       if (resp.status !== 204) {
         return resp.json();
       }
-      return Promise.resolve();
     })
     .catch(() => alert('Network error'));
 }
